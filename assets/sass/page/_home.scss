@@ -1,10 +1,18 @@
 .hero {
+	.section_in {
+		@include bp($point_2) {
+			padding: 0;
+		}
+	}
 }
 .section_in {
 }
 .hero_mainWrapper {
 }
 .hero_mainHead {
+	@include bp($point_2) {
+		padding: 0 2rem;
+	}
 }
 .address_wrapper {
 	position: relative;
@@ -28,6 +36,9 @@
 	}
 }
 .hero_mainBanner {
+	@include bp($point_2) {
+		padding: 0 2rem;
+	}
 }
 .hero_slideBannerWrapper {
 	position: relative;

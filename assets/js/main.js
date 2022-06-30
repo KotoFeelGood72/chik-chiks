@@ -115,7 +115,7 @@ ScrollTrigger.create({
   start: '-=10% center',   
     
   onEnter: () => {
-    gsap.to('.products_cat', { duration: 0.4, delay: 0.0, scrollTo: {x: "#cocomber-link", offsetX: 50}, ease: "none"} );
+    gsap.to('.products_cat', { duration: 0.4, delay: 0.0, scrollTo: {x: "#cocomber-link", offsetX: 0}, ease: "none"} );
   },
   
   onLeaveBack: () => {
@@ -140,6 +140,26 @@ ScrollTrigger.create({
 
 })
 
+// function animateScrollMenu() {
+// 	const productSection = Array.from(document.querySelectorAll('.observer')).map(function(el) {
+// 		const menuScroll = document.querySelector('.products_cat')
+// 		const productLink = Array.from(document.querySelectorAll('.products_catLink')).map(function(item, idx) {
+// 				ScrollTrigger.create({
+// 					trigger: el,
+// 					start: '-=10% center',
+// 					onEnter: () => {
+// 						gsap.to(menuScroll, { duration: 0.5, delay: 0.0, scrollTo: {x: idx, offsetX: 0}, ease: "none"} );
+// 					},
+					
+// 					onLeaveBack: () => {
+// 						gsap.to(menuScroll, { duration: 0.5, delay: 0.0, scrollTo: {x: idx, offsetX: 0}, ease: "none"} );
+// 					}
+// 				})
+// 		})
+// 	})
+// }
+
+// animateScrollMenu();
 
 
 
