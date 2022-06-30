@@ -1,0 +1,86 @@
+.address_popup.popup 
+	.popup_bg 
+	.popup_main.address_popupMain 
+		.address_popupTrigger 
+		ul.address_popupVariant
+			each item in ['Самовывоз', 'Доставка', 'На месте']
+				li=item
+		.address_content 
+			h4 Мои адреса
+			ul.address_list 
+				li.address_item 
+					input(type="radio", name="address" id="address_1")
+					label(for="address_1") 
+						p ул. Героев-Разведчиков, д. 52/110
+						span.address_change
+				li.address_item 
+					input(type="radio", name="address" id="address_2")
+					label(for="address_2") 
+						p ул. Героев-Разведчиков, корп. 2 д. 152/110
+						span.address_change
+			.address_btn 
+				button(type="submit") Забрать отсюда
+
+.burger_popup.popup 
+	.popup_bg 
+	.burger_popupMain
+		.close 
+			img(src="i/close.svg", alt="")
+		.burger_coin 
+			p 312
+			.burger_coinIcon 
+				img(src="i/coin.png", alt="")
+		.burger_logo 
+			img(src="i/logo.jpg", alt="")
+		ul.burger_social 
+			each item in ['vk', 'inst', 'face']
+				li 
+					a(href="#")
+						img(src=`i/${item}.png`, alt="")
+		ul.burgerMain_nav 
+				li 
+					a(href="/profile.html") Мой профиль
+				li 
+					a(href="/history.html") История заказов
+				li 
+					a(href="#") О нас 
+		ul.burgerOther_nav 
+			each item in ['Пользовательское соглашение', 'Политика конфиденциальности', 'Публичная оферта', 'Программа лояльности', 'Полные правила акций']
+				li 
+					a(href="#")=item
+
+// Phone
+
+.phone_submit.popup 
+	.phone_submitBg.popup_bg 
+	.phone_submit--main
+		.phone_submit--close.close
+			img(src="i/left.svg", alt="") 
+		.phone_submitHead 
+			p Введите ваш номер
+			.phone_submit--input 
+				input(type="tel" value="+ 7 (909) 449-49-99" placeholder="+ 7 (909) 449-49-99")
+		.phone_submit--medium 
+			a(href="#") Обработка персональных данных
+		.phone_submit--bottom 
+			a(href="#") Получить код  
+.phone_code.popup 
+	.phone_submitBg.popup_bg 
+	.phone_submit--main
+		.phone_submit--close.close
+			img(src="i/left.svg", alt="") 
+		.phone_submitHead 
+			p Введите код из смс
+			.code_submit--input.fieldset
+				label.box 
+					<input class="field" type="text" placeholder="•">
+				label.box 
+					<input class="field" type="text" placeholder="•">
+				label.box 
+					<input class="field" type="text" placeholder="•">
+				label.box 
+					<input class="field" type="text" placeholder="•">
+		.phone_submit--medium 
+			p Изменить номер
+		.phone_submit--bottom.mod_timer 
+			a(href="#")!='Повторная отправка через <span id="rocket">00:55</span>'

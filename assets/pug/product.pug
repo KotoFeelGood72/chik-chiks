@@ -1,0 +1,66 @@
+extends _layout
+
+block vars
+	- array = {body_class:'', layout_mod:'', sub_keywords:'', title_inner:'HOME'}
+block content_block
+	section.products 
+		.section_in 
+			.products_main
+				.product_close
+					a(href="javascript: history.go(-1)")
+						img(src="i/closes.svg", alt="") 
+				.products_imgWrapper 
+					img(src="i/chicken.png", alt="")
+				.products_content
+					.productsContent_head
+						h1 Курица гриль
+						.products_btn--details.trigger_details !
+					.products_shorts 
+						p Курицу гриль с аппетитной румяной корочкой и божественным ароматом восточных специй любят абсолютно все, независимо от пола, возраста и социального статуса. 
+					.products_detailsContentWrapper
+						.productsDetails_bg
+						.products_detailsContent 
+							p Пищевая ценность, 100 г.
+							ul.pruducts_detailsList 
+								-
+									var items = [
+										{
+											title: 'Калорийность',
+											value: '161 Ккал',
+										},
+										{
+											title: 'Углеводы',
+											value: '17 г.',
+										},
+										{
+											title: 'Жиры',
+											value: '5,66 г.',
+										},
+										{
+											title: 'Белки',
+											value: '9,22 г.',
+										},
+										{
+											title: 'Вес',
+											value: '380 г.',
+										},
+									]
+								each item in items 
+									li 
+										p=item.title 
+										span=item.value
+					.products_short 
+						p Ингридиенты: курица, соль, перец, масло растительное
+						span 1200 г.
+				.products_action 
+					.products_qtyWrapper 
+						.products_btnMinus.btn_qty 
+							button –
+						.products_Input.input_qty 
+							input(type="number", name="qty" value="1")
+						.products_btnPlus.btn_qty 
+							button +
+					.products_btnCart 
+						p Добавить
+						span 420
+					

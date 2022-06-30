@@ -1,0 +1,119 @@
+//------------------------------------------------------------layout
+.header {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	height: $header;
+	width: 100%;
+
+
+	will-change: transform;
+	@include z-index(popup);
+	@include flex-center;
+
+		height: $header_mob;
+	transition: all .4s ease;
+	&.fixed {
+		background-color: $white;
+		height: 8rem;
+			height: 6rem;
+		.header_main {
+			padding: 1rem 0;
+		}
+	}
+}
+
+
+.header {
+}
+.section_in {
+}
+.header_main {
+	@include flex-space;
+	padding: 3rem 0 1.7rem 0;
+}
+.header_burger {
+	width: 1.6rem;
+	height: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	margin-right: 7.8rem;
+	cursor: pointer;
+	@include bp($point_2, $direction:min) {
+		width: 2.6rem;
+		height: 2rem;
+	}
+	li {
+		border-bottom: .2rem solid $black;
+		&:nth-child(1) {
+			width: 1.2rem;
+			@include bp($point_2, $direction:min) {
+				width: 2rem;
+			}
+		}
+		&:nth-child(2) {
+			width: 100%;
+			margin: .5rem 0;
+			@include bp($point_2, $direction:min) {
+				width: 2.6rem;
+			}
+		}
+		&:nth-child(3) {
+			width: .8rem;
+			@include bp($point_2, $direction:min) {
+				width: 1.5rem;
+			}
+		}
+	}
+}
+.header_info {
+	@include flex-start;
+}
+.header_logo {
+	width: 2.2rem;
+		margin-right: 0.8rem;
+}
+.header_delivery {
+	p {
+		margin-right: .7rem;
+		font-size: 1.6rem;
+		font-family: $font_4;
+	}
+	@include flex-start;
+		margin-right: 4.2rem;
+}
+.header_delIcon {
+	@include flex-center;
+	margin-top: 0.2rem;
+}
+.icon {
+}
+.icon-down {
+}
+.header_coinWrapper {
+	@include flex-start;
+}
+.header_coin {
+	color: $yellow;
+		font-family: $font_4;
+		margin-right: 0.7rem;
+}
+.header_coinIcon {
+	width: 2.8rem;
+}
+
+.address_wrapper {
+	@include flex-start;
+	margin-bottom: 2.1rem;
+	input {
+		@include app;
+		font-size: 1.4rem;
+			font-weight: 400;
+	}
+	// .address_icon {
+	// 	margin-right: 1.6rem;
+	// 	width: 1.9rem;
+	// 	@include flex-center;
+	// }
+}
