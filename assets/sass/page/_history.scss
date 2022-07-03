@@ -5,6 +5,16 @@
 	border-radius: 0 0 3.2rem 3.2rem;
 	border-top: 0;
 	margin-bottom: 2.6rem;
+	background-color: $white;
+	position: sticky;
+	top: 0;
+	left: 0;
+	@include z-index(header);
+	&.fixed {
+		&:before {
+			display: none;
+		}
+	}
 }
 .secttion_in {
 }
@@ -30,6 +40,7 @@
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
+	font-family: $font_4;
 	@include bp($point_2, $direction:min) {
 		font-size: 3rem;
 	}

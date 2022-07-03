@@ -3,7 +3,7 @@ extends _lay
 block vars
 	- array = {body_class:'', layout_mod:'no_padding', sub_keywords:'', title_inner:'HOME'}
 block content_block
-	section.cart_head 
+	section.cart_head.header_custom 
 		.section_in 
 			.cartHead_main 
 				.cart_back 
@@ -82,8 +82,23 @@ block content_block
 							button(type="submit") +
 		.cartAction_main 
 			ul.address_popupVariant
-				each item in ['Самовывоз', 'Доставка', 'На месте']
-					li=item
+				-
+					var addressItem = [
+						{
+							title: 'Самовывоз',
+							data: 'address1',
+							mod: 'active_tab'
+						},
+						{
+							title: 'Доставка',
+							data: 'address2'
+						},
+					]
+				each item, i in addressItem
+					if i == 0
+						li(data-tab=item.data class=item.mod)=item.title
+					else 
+						li(data-tab=item.data class=item.mod)=item.title
 			.cart_payCoin--w
 				.cart_payCoin
 					p СПИСАТЬ

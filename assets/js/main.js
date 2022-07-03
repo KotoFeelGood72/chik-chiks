@@ -17,10 +17,11 @@ $(document).ready(function ($) {
 	if (devStatus) {
 		pageWidget(['index']);
 		pageWidget(['profile']);
-		pageWidget(['product']);
+		pageWidget(['policy']);
 		pageWidget(['cart']);
 		pageWidget(['coin']);
 		pageWidget(['history']);
+		pageWidget(['order']);
 		getAllClasses('html', '.elements_list');
 	}
 });
@@ -28,11 +29,13 @@ $(document).ready(function ($) {
 $(window).on('load', function () {
 	updateSizes();
 	loadFunc();
+	
 	if($('#map')[0]) {
 		map();
 	}
 	if(windowWidth < mediaPoint1) {
 		burgerMobile();
+		cartMobile();
 	}
 });
 
@@ -93,6 +96,25 @@ if ('objectFit' in document.documentElement.style === false) {
 		);
 	});
 }
+
+$(window).on("scroll", function () {
+	var scrolled = $(this).scrollTop();
+	if( scrolled > 107 ) {
+			$('.header_custom').addClass('fixed');
+	}   
+	if( scrolled <= 107 ) {     
+			$('.header_custom').removeClass('fixed');
+	}
+});
+
+$(document).ready(function()  {
+
+	var inputsTel = document.querySelectorAll('input[type="tel"]');
+	Inputmask({
+		"mask": "+7 (999) 999-99-99",
+		showMaskOnHover: false
+	}).mask(inputsTel);
+})
 
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
@@ -178,11 +200,13 @@ const heroSlider = new Swiper('.hero_slider ', {
       slidesPerView: 3.5,
       spaceBetween: 10,
 			freeMode: false,
+			slidesOffsetAfter: 10,
     },
     480: {
       slidesPerView: 6,
       spaceBetween: 10,
 			freeMode: false,
+			slidesOffsetAfter: 10,
     },
     1200: {
       slidesPerView: 6,
@@ -205,7 +229,8 @@ const heroSlider = new Swiper('.hero_slider ', {
 $(document).ready(function() {
 
 	let popup = $('.popup');
-	$('.header_delivery').click(function() {
+	$('.header_delivery').click(function(e) {
+		e.preventDefault();
 		$('.address_popup').each(function() {
 				$(this).toggleClass('active');
 				console.log('Good', this);
@@ -226,15 +251,18 @@ $(document).ready(function() {
 			$(popup).removeClass('active')
 		$('.burger_popup').each(function() {
 				$(this).toggleClass('active');
-				console.log('Good', this);
+				$('html').toggleClass('active');
+				// console.log('Good', this);
 				$(this).each(function() {
 					$('.close').click(function() {
 						$(this).closest('.popup').removeClass('active');
-						console.log(this)
+						$('html').removeClass('active');
+						// console.log(this)
 					})
 					$('.popup_bg').click(function() {
 						$(this).closest('.popup').removeClass('active');
-						console.log(this)
+						$('html').removeClass('active');
+						// console.log(this)
 					})
 				})
 		})
@@ -245,15 +273,13 @@ $(document).ready(function() {
 		$(popup).removeClass('active')
 	$('.phone_submit ').each(function() {
 			$(this).toggleClass('active');
-			console.log('Good', this);
+			$('input[type="tel"]').focus();
 			$(this).each(function() {
 				$('.close').click(function() {
 					$(this).closest('.popup').removeClass('active');
-					console.log(this)
 				})
 				$('.popup_bg').click(function() {
 					$(this).closest('.popup').removeClass('active');
-					console.log(this)
 				})
 			})
 	})
@@ -360,39 +386,54 @@ function burgerMobile() {
 $(document).ready(function() {
 	let card = $('.products_card');
 	let triggerCard = $('.products_qtyTrigger');
+	let triggerDelete = $('.minus_qty')
+
+	// $(triggerCard).on('click', () => {
+	// 	$(card).addClass('active')
+	// })
 
 	$(card).each(function() {
 		$(triggerCard).click(function() {
 			$(this).closest(card).addClass('active');
-			if($(this).closest(card).hasClass('active')) {
-				$(this).closest(card).siblings().removeClass('active');
-			}
+			// console.log('Good add')
+			// if($(this).closest(card).hasClass('active')) {
+			// 	$(this).closest(card).siblings().removeClass('active');
+			// }
+
 		})
+		if($(this).find(triggerDelete).click(function(){
+			$(this).closest(card).removeClass('active');
+		})) {
+			$(this).closest(card).removeClass('active');
+			// console.log('click delete', this)
+		}
 	})
 
 })
 
 // tabs
-// function tabs(link, block) {
-// 	let linkSelector = $(link),
-// 		blockSelector = $(block);
+function tabs(link, block) {
+	let linkSelector = $(link),
+		blockSelector = $(block);
 
-// 	$(linkSelector).on('click', function (e) {
-// 		e.preventDefault();
+	$(linkSelector).on('click', function (e) {
+		e.preventDefault();
 
-// 		let $this = $(this),
-// 			currentData = $(this).data('tab');
+		let $this = $(this),
+			currentData = $(this).data('tab');
 
-// 		$(blockSelector).removeClass('active_tab');
-// 		$(linkSelector).removeClass('active_tab');
+		$(blockSelector).removeClass('active_tab');
+		$(linkSelector).removeClass('active_tab');
 
-// 		$(block + '[data-tab="' + currentData + '"]').addClass('active_tab');
-// 		$this.addClass('active_tab');
+		$(block + '[data-tab="' + currentData + '"]').addClass('active_tab');
+		$this.addClass('active_tab');
 
-// 	});
-// }
+	});
+}
 
-// tabs('.products_catLink', '.products_tabItem');
+$(document).ready(function() {
+	tabs('.address_popupVariant li ', '.address_content');
+})
 
  
 
@@ -611,6 +652,76 @@ $(document).ready(function() {
 	});
 
 })
+
+$(document).ready(function() {
+	const heroSlider = Array.from(document.querySelectorAll('.hero_slide')).map((item) => {
+		item.addEventListener('click', function() {
+			new SlideStories('slide');
+			$('.stories').toggleClass('active');
+			$('.stories_bg, .close_stories').click(function() {
+				$('.stories').removeClass('active')
+			})
+		})
+	})
+
+	$('.thigger_product, .product_close').click((e) => {
+		e.preventDefault();
+		$('.products').toggleClass('active');
+		$('html').toggleClass('active');
+	})
+
+
+
+
+	$('.cart_variant').on('click', function() {
+		$('.wallet').addClass('active')
+	})
+
+		$('.wallet_item>label, .wallet_bg').click(function() {
+			disableWallet();
+		})
+
+	function disableWallet () {
+		setTimeout(function() {
+			$('.wallet').removeClass('active');
+		}, 300)
+	}
+		
+})
+
+
+
+
+function cartMobile() {
+	$('.products_qtyTrigger').on('click', () => {
+		$('.minicart').addClass('active');
+	})
+	$('.products_cardBottom').click(function() {
+		if($('.products_card').hasClass('active')) {
+			$('.minicart').addClass('active');
+		} else {
+			$('.minicart').removeClass('active');
+		}
+	})
+	$('.products_btnCart').click(function() {
+		$('.products').removeClass('active');
+		$('html').removeClass('active');
+		$('.minicart').addClass('active');
+	})
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
