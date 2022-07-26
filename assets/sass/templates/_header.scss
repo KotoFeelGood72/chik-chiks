@@ -34,9 +34,10 @@
 	}
 }
 .header_burger {
-	width: 2rem;
-	height: 1.6rem;
-	margin-right: 7.8rem;
+	width: 2.5rem;
+	min-width: 2.5rem;
+	height: 1.8rem;
+	margin-right: 4.8rem;
 	cursor: pointer;
 	@include bp($point_2, $direction:min) {
 		width: 3.6rem;
@@ -49,7 +50,7 @@
 	}
 }
 .header_logo {
-	width: 2.2rem;
+	width: 3rem;
 	margin-right: 0.8rem;
 	@include bp($point_2, $direction:min) {
 		width: 6rem;
@@ -62,18 +63,21 @@
 	}
 	p {
 		margin-right: .7rem;
-		font-size: 1.6rem;
+		font-size: 1.8rem;
 		font-family: $font_4;
 	}
 	@include flex-start;
 		margin-right: 4.2rem;
+		@include bp($point_2) {
+			margin-right: 3rem;
+		}
 }
 .header_delIcon {
 	@include flex-center;
 	margin-top: 0.2rem;
 	width: 1.7rem;
 	@include bp($point_2) {
-		width: 1rem
+		width: 1.3rem
 	}
 }
 .icon {
@@ -93,7 +97,7 @@
 	}
 }
 .header_coinIcon {
-	width: 2.8rem;
+	width: 3rem;
 	@include bp($point_2, $direction:min) {
 		width: 4rem
 	}

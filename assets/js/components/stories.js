@@ -50,7 +50,7 @@ class SlideStories {
   init() {
     this.next = this.next.bind(this);
     this.prev = this.prev.bind(this);
-    this.items = this.slide.querySelectorAll('.slide-items > *');
+    this.items = this.slide.querySelectorAll('.slide-items');
     this.thumb = this.slide.querySelector('.slide-thumb');
     this.addThumbItems();
     this.activeSlide(0);

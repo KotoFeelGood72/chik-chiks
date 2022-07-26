@@ -25,6 +25,7 @@
 	transition: all .3s ease;
 	// height: 40rem
 	border-radius: 1rem;
+	// min-height: 100vh;
 }
 .fly_cart--head {
 	@include flex-space;
@@ -49,6 +50,7 @@
 	overflow-y: auto;
 	margin-bottom: 5rem;
 	padding-right: 2rem;
+	min-height: 46vh;
 }
 .fry_cart--items {
 	@include flex-space;

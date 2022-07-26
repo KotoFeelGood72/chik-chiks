@@ -127,7 +127,6 @@ function getRandom(min, max) {
 var styles = ['color: red', 'background: transparent'].join(';');
 var message = 'Developed by KotoFeelGood https://api.whatsapp.com/send?phone=79615311386&text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%2C%20%D1%8F%20%D0%BF%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0';
 
-// console.info('%c%s', styles, message);
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 ScrollTrigger.create({
@@ -162,26 +161,30 @@ ScrollTrigger.create({
 
 })
 
-// function animateScrollMenu() {
-// 	const productSection = Array.from(document.querySelectorAll('.observer')).map(function(el) {
-// 		const menuScroll = document.querySelector('.products_cat')
-// 		const productLink = Array.from(document.querySelectorAll('.products_catLink')).map(function(item, idx) {
+// const scrollNavigation = Array.from(document.querySelectorAll('.products_catLink')).map((el) => {
+// 	const arr = Array.from(el.querySelectorAll('.products_tabList>li')).map(function (item, index) {
+// 			return (
 // 				ScrollTrigger.create({
-// 					trigger: el,
-// 					start: '-=10% center',
+  
+// 					trigger: ".observer#naggets",
+					
+// 					start: '-=10% center',   
+						
 // 					onEnter: () => {
-// 						gsap.to(menuScroll, { duration: 0.5, delay: 0.0, scrollTo: {x: idx, offsetX: 0}, ease: "none"} );
+// 						gsap.to('.products_cat', { duration: 0.5, delay: 0.0, scrollTo: {x: "#naggets-link", offsetX: 0}, ease: "none"} );
 // 					},
 					
 // 					onLeaveBack: () => {
-// 						gsap.to(menuScroll, { duration: 0.5, delay: 0.0, scrollTo: {x: idx, offsetX: 0}, ease: "none"} );
+// 						gsap.to('.products_cat', { duration: 0.5, delay: 0.0, scrollTo: {x: "#up-link", offsetX: 0}, ease: "none"} );
 // 					}
+				
 // 				})
-// 		})
-// 	})
-// }
+// 			)
+// 	});
+// })
 
-// animateScrollMenu();
+
+
 
 
 
@@ -351,27 +354,6 @@ $('.phone_code').each(function() {
 
 
 
-// tabs
-// function tabs(link, block) {
-// 	let linkSelector = $(link),
-// 		blockSelector = $(block);
-
-// 	$(linkSelector).on('click', function (e) {
-// 		e.preventDefault();
-
-// 		let $this = $(this),
-// 			currentData = $(this).data('tab');
-
-// 		$(blockSelector).removeClass('active');
-// 		$(linkSelector).removeClass('active');
-
-// 		$(block + '[data-tab="' + currentData + '"]').addClass('active');
-// 		$this.addClass('active');
-
-// 	});
-// }
-
-// tabs('.lisence_item--link', '.lisence_item');
 
 function burgerMobile() {
 	$('.header_nav, .popup_burger--list>li>a, .popup_burger--bg').click(function() {
@@ -479,11 +461,15 @@ function handleInputChange(e) {
   target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%'
 }
 
-rangeInputs.forEach(input => {
-  input.addEventListener('input', handleInputChange)
-})
 
-numberInput.addEventListener('input', handleInputChange)
+if(rangeInputs) {
+	// numberInput.addEventListener('input', handleInputChange);
+	const rangeSlider = Array.from(rangeInputs).map((el) => {
+		el.addEventListener('input', handleInputChange)
+	})
+	
+}
+
 
 
 
@@ -540,71 +526,6 @@ $(document).ready(function() {
 })
 
 
-/* End SMS Code input logic */
-
-// Controls 
-// const successBtn = document.querySelector(".success-btn");
-// const failureBtn = document.querySelector(".failure-btn");
-// const resetBtn = document.querySelector(".reset-btn");
-
-// successBtn.addEventListener("click", (event) => {
-//   fieldset.classList.add("animate-success");
-// });
-// resetBtn.addEventListener("click", (event) => {
-//   fieldset.classList.remove("animate-failure");
-//   fieldset.classList.remove("animate-success");
-// });
-// failureBtn.addEventListener("click", (event) => {
-//   function getDelay() {
-//     const firstStepDuration = getCustomPropertyValue(
-//       "--transition-duration-step-1"
-//     );
-//     const secondStepDuration = getCustomPropertyValue(
-//       "--transition-duration-step-2"
-//     );
-
-//     return parseInt(firstStepDuration) + parseInt(secondStepDuration);
-//   }
-  
-//   function animateFailure() {
-//     fieldset.classList.add("animate-failure");
-//     const delay = getDelay();
-
-//     setTimeout(() => {
-//       fieldset.classList.remove("animate-failure");
-//     }, delay);
-//   }
-  
-//   if (fieldset.classList.contains("animate-success")) {
-//     fieldset.classList.remove("animate-success");
-    
-//     const delay = parseInt(getCustomPropertyValue("--transition-duration-step-1"))
-    
-//     setTimeout(() => {
-//       animateFailure();
-//     }, delay)
-    
-//     return;
-//   } 
-  
-//   animateFailure();
-// });
-
-// const inputs = document.querySelectorAll(".settings-controls__input");
-
-// function setAnimationDuration({ target }) {
-//   const {
-//     value,
-//     dataset: { step }
-//   } = target;
-//   const safeValue = parseInt(value);
-//   const propertyValue = Number.isNaN(safeValue) ? null : safeValue + "ms";
-
-//   root.style.setProperty(`--transition-duration-step-${step}`, propertyValue);
-// }
-// inputs.forEach((node) => {
-//   node.addEventListener("input", setAnimationDuration);
-// });
 
 $(document).ready(function() {
 	
@@ -625,7 +546,7 @@ $(document).ready(function() {
 		var item = $($(this).attr("href"));
 		if (item.length) { return item; }
 		});
-	// Bind to scroll
+
 
 
 	$(window).scroll(function(){
@@ -709,6 +630,23 @@ function cartMobile() {
 		$('.minicart').addClass('active');
 	})
 }
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', (e) => {
+	let loader = document.querySelector('.loader');
+	let	hiddens = document.querySelector('body');
+	setTimeout(() => {
+		loader.classList.add('is-hidden');
+		hiddens.classList.remove('is-hidden');
+	}, 100)
+})
+
+
 
 
 

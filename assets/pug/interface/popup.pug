@@ -123,11 +123,13 @@
 		.close_stories
 			img(src="i/close.svg", alt="")
 		.slide(data-slide="slide")
-			.slide-items 
-				img(src="https://source.unsplash.com/V7IJzp_ElQc/1000x1500", alt="")
-				img(src="https://source.unsplash.com/GJIc8O6sM5M/1000x1500", alt="")
-				img(src="https://source.unsplash.com/VlMMBxSZuSI/1000x1500", alt="")
-				img(src="https://source.unsplash.com/xWEHhKYqdlY/1000x1500", alt="")
+			-for(i = 0; i < 5; i++)
+				.slide-items
+					img(src="i/chickends.jpg", alt="")
+					.slide_item_content 
+						p Бесплатная достаавка от 111 р.
+						span Бесплатная доставка при заказе от 699 рублей. При меньшей сумме заказа стоимость доставки равна 99р.
+						.quote_txt Берегите свое время
 			.slide-nav 
 				.slide-thumb 
 				button.slide-prev
@@ -221,3 +223,11 @@ section.products
 			li.wallet_item 
 				input(type="radio", name="wallet" id="walletTwo")
 				label(for="walletTwo") Наличные
+
+
+
+.loader 
+	.loader_main 
+		<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+			<circle cx="50" cy="50" r="46"/>
+		</svg>
